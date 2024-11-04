@@ -1,0 +1,91 @@
+site_name: "{{ project_name }}"
+site_description: "{{ project_description }}"
+repo_url: "https://github.com/{{ repository_namespace }}/{{repository_name}}/"
+site_url: https://{{ repository_namespace }}.github.io/{{repository_name}}/
+site_author: "{{ author_fullname }}"
+copyright: Copyright &copy; {{ copyright_date }} {{ copyright_holder }}
+
+theme:
+  name: material
+  custom_dir: overrides
+  icon:
+    logo: material/graph-outline
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: red
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: red
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  features:
+    - announce.dismiss
+    - content.action.edit
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - content.tooltips
+    # - content.tabs.link
+    - navigation.tracking # update URL based on current item in TOC
+    - navigation.path # shows breadcrumbs
+    - navigation.tabs # make top level tabs
+    - navigation.indexes # documents can be directly attached to sections (overview pages)
+    - navigation.footer # next/previous page buttons in footer
+    - navigation.top # adds back-to-top button
+    # - navigation.sections # top-level sections are rendered as groups
+    # - navigation.expand # expand all subsections in left sidebar by default
+    - toc.follow # makes toc follow scrolling
+    # - toc.integrate  # integrates toc into left menu
+    - search.highlight
+    - search.suggest
+  # - search.share
+
+plugins:
+  - search
+  - autorefs
+  - mknodes
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          import:
+            - url: https://docs.python.org/3/objects.inv
+              domains: [std, py]
+          options:
+            # https://mkdocstrings.github.io/python/usage/
+            show_signature_annotations: true
+            show_symbol_type_toc: true
+            show_symbol_type_heading: true
+            show_root_toc_entry: false
+            # merge_init_into_class: true
+            ignore_init_summary: true
+            inherited_members: false
+            signature_crossrefs: true
+            separate_signature: true
+            line_length: 90
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji
+  - toc:
+      permalink: true
+
+extra:
+  social:
+  - icon: fontawesome/brands/{{ repository_provider.rsplit(".", 1)[0] }}
+    link: https://{{ repository_provider }}/{{ author_username }}
+  - icon: fontawesome/brands/python
+    link: https://pypi.org/project/{{ python_package_distribution_name }}/
