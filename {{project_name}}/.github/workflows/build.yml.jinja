@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: {% raw %}${{ matrix.os }}{% endraw %}
-    continue-on-error: {% raw %}${{ matrix.python_version == '3.14' }}{% endraw %}
+    continue-on-error: {% raw %}${{ matrix.python-version == '3.14' }}{% endraw %}
     strategy:
       matrix:
         python_version: ["3.12", "3.13", "3.14"]
@@ -38,7 +38,7 @@ jobs:
           args: "format --check"
 
       - name: Static type checking (MyPy)
-        run: uv run mypy src/{% raw &}{{python_package_import_name}}{% endraw %}/
+        run: uv run mypy src/{% raw %}{{python_package_import_name}}{% endraw %}/
 
       - name: Run tests
         run: uv run pytest --cov-report=xml
@@ -65,7 +65,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "{% raw %}{{ python_minimum_version }}{% rawend %}"
+          python-version: "{% raw %}{{ python_minimum_version }}{% endraw %}"
 
       - name: Install uv
         uses: yezz123/setup-uv@v4
