@@ -2,6 +2,7 @@
 _commit: 0.0.1
 _min_copier_version: "9"
 _src_path: gh:phil65/copier-phil65
+_subdirectory: project
 _envops:
   autoescape: false
   keep_trailing_newline: true
