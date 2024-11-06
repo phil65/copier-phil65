@@ -20,7 +20,7 @@ jobs:
           python-version: {% raw %}${{ matrix.python_version }}{% endraw %}
           allow-prereleases: true
       - name: Install uv
-        uses: yezz123/setup-uv@v4
+        uses: astral-sh/setup-uv@v3
         with:
           enable-cache: true
           cache-dependency-glob: pyproject.toml
