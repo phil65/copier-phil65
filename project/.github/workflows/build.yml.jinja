@@ -68,7 +68,7 @@ jobs:
           python-version: "{% raw %}{{ python_minimum_version }}{% endraw %}"
 
       - name: Install uv
-        uses: yezz123/setup-uv@v4
+        uses: astral-sh/setup-uv@v3
         with:
           enable-cache: true
           cache-dependency-glob: pyproject.toml
