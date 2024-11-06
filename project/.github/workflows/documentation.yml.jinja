@@ -32,7 +32,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "{% raw %}{{ python_minimum_version }}{% endraw %}"
+          python-version: "{{ python_minimum_version }}"
       - name: Install uv
         uses: yezz123/setup-uv@v4
       - name: Install dependencies

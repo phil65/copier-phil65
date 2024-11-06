@@ -38,7 +38,7 @@ jobs:
           args: "format --check"
 
       - name: Static type checking (MyPy)
-        run: uv run mypy src/{% raw %}{{python_package_import_name}}{% endraw %}/
+        run: uv run mypy src/{{ python_package_import_name }}/
 
       - name: Run tests
         run: uv run pytest --cov-report=xml
