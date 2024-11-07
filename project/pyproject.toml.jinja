@@ -30,7 +30,7 @@ classifiers = [
 ]
 keywords = []
 requires-python = ">={{ python_minimum_version }}"
-dependencies = []
+dependencies = [{% if libraries_use_qt %}"prettyqt", "pyside6"{% endif %}]
 license = "MIT"
 
 [tool.uv]
@@ -41,6 +41,7 @@ dev-dependencies = [
     # test
     "pytest",
     "pytest-cov",
+    {% if libraries_use_qt %}"pytest-qt",{% endif %}
     # docs
     "mkdocs-material",
     "mkdocs-mknodes",
