@@ -89,6 +89,6 @@ python_package_command_line_name:
   default: "{{ project_name | slugify }}"
 
 libraries_use_qt:
-  type: str
+  type: bool
   help: Use Qt libraries?
   default: false
