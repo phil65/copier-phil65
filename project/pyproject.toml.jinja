@@ -33,6 +33,9 @@ requires-python = ">={{ python_minimum_version }}"
 dependencies = [{% if libraries_use_qt %}"prettyqt", "pyside6"{% endif %}]
 license = {file = "LICENSE"}
 
+[tool.uv]
+default-groups = ["lint", "docs"]
+
 [dependency-groups]
 dev = ["pytest", "pytest-cov",{% if libraries_use_qt %}"pytest-qt", {% endif %} "pyreadline3"]
 benchmark = ["pyinstrument"]
