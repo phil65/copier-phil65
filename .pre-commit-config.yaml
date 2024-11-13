@@ -1,0 +1,26 @@
+default_language_version:
+  python: python3.13
+default_stages: [pre-commit]
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    # https://pre-commit.com/hooks.html
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-case-conflict
+      - id: mixed-line-ending
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: check-json
+      - id: check-xml
+      - id: check-yaml
+        args: [--allow-multiple-documents, --unsafe]
+      - id: debug-statements
+      - id: detect-private-key
+
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v3.30.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
+        additional_dependencies: [typing-extensions]
