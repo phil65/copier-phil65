@@ -71,7 +71,7 @@ exclude = ['venv/', '.venv/', 'tests/']
 [tool.ruff]
 line-length = 90
 extend-exclude = ['docs']
-target-version = "py3{{ python_minimum_version | replace('.', '') }}"
+target-version = "py{{ python_minimum_version | replace('.', '') }}"
 
 [tool.ruff.lint]
 select = [
