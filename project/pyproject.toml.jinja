@@ -10,7 +10,9 @@ build-backend = "hatchling.build"
 [project]
 name = "{{ python_package_distribution_name }}"
 description = "{{ project_description }}"
-authors = [{name = "{{ author_fullname }}", email = "{{ author_email }}"}]
+authors = [
+    { name = "{{ author_fullname }}", email = "{{ author_email }}" },
+]
 readme = "README.md"
 dynamic = ["version"]
 classifiers = [
@@ -31,10 +33,10 @@ classifiers = [
 keywords = []
 requires-python = ">={{ python_minimum_version }}"
 dependencies = [{% if libraries_use_qt %}"prettyqt", "pyside6"{% endif %}]
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 
 [tool.uv]
-default-groups = ["lint", "docs"]
+default-groups = ["dev", "lint", "docs"]
 
 [dependency-groups]
 dev = ["pytest", "pytest-cov",{% if libraries_use_qt %}"pytest-qt", {% endif %} "pyreadline3"]
