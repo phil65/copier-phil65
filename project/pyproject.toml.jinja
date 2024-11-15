@@ -39,7 +39,7 @@ license = { file = "LICENSE" }
 default-groups = ["dev", "lint", "docs"]
 
 [dependency-groups]
-dev = ["pytest", "pytest-cov",{% if libraries_use_qt %}"pytest-qt", {% endif %} "pyreadline3"]
+dev = ["pytest", "pytest-cov",{% if libraries_use_qt %}"pytest-qt", {% endif %} "pyreadline3", "devtools"]
 benchmark = ["pyinstrument"]
 lint = ["ruff", "mypy[faster-cache]"]
 docs = ["mkdocs-mknodes", "mkdocs-material"]
