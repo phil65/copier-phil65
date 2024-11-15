@@ -52,9 +52,8 @@ jobs:
         run: uv run pytest --cov-report=xml --cov=src/{{ python_package_import_name }}/ --cov-report=term-missing
 
       - name: Upload test results to Codecov
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
-          token: {% raw %}${{ secrets.CODECOV_TOKEN }}{% endraw %}
           fail_ci_if_error: false
           verbose: true
 
