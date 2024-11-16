@@ -37,6 +37,9 @@ dependencies = [
     "prettyqt",
     "pyside6",
     {% endif %}
+    {% if libraries_use_pydantic %}
+    "pydantic",
+    {% endif %}
     # Only add below (Copier)
 ]
 license = { file = "LICENSE" }
@@ -88,6 +91,7 @@ disable_error_code = ["misc", "import"]
 pretty = true
 check_untyped_defs = true
 exclude = ['venv/', '.venv/', 'tests/']
+plugins = [{% if libraries_use_pydantic %}"pydantic.mypy"{% endif %}]
 
 [tool.ruff]
 line-length = 90

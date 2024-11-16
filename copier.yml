@@ -92,3 +92,8 @@ libraries_use_qt:
   type: bool
   help: Use Qt libraries?
   default: false
+
+libraries_use_pydantic:
+  type: bool
+  help: Use Pydantic?
+  default: false
