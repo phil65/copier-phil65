@@ -46,10 +46,10 @@ jobs:
           args: "format --check"
 
       - name: Static type checking (MyPy)
-        run: uv run mypy src/{{ python_package_import_name }}/
+        run: uv run --no-group docs mypy src/{{ python_package_import_name }}/
 
       - name: Run tests
-        run: uv run pytest --cov-report=xml --cov=src/{{ python_package_import_name }}/ --cov-report=term-missing
+        run: uv run --no-group docs pytest --cov-report=xml --cov=src/{{ python_package_import_name }}/ --cov-report=term-missing
 
       - name: Upload test results to Codecov
         uses: codecov/codecov-action@v5
