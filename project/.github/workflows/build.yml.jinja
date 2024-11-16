@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-      {% if use_qt %}
+{% if use_qt %}
 
       - uses: tlambert03/setup-qt-libs@v1
       # *alternative*:
@@ -21,12 +21,13 @@ jobs:
       #   with:
       #     qt: true
 
-      {% endif %}
+{% endif %}
       - name: Set up Python {% raw %}${{ matrix.python_version }}{% endraw %}
         uses: actions/setup-python@v5
         with:
           python-version: {% raw %}${{ matrix.python_version }}{% endraw %}
           allow-prereleases: true
+
       - name: Install uv
         uses: astral-sh/setup-uv@v3
         with:
