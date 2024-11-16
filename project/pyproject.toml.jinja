@@ -33,7 +33,7 @@ classifiers = [
 keywords = []
 requires-python = ">={{ python_minimum_version }}"
 dependencies = [
-    {%- if libraries_use_qt -%}
+    {% if libraries_use_qt -%}
     "prettyqt",
     "pyside6",
     {%- endif -%}
