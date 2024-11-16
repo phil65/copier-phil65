@@ -33,13 +33,13 @@ classifiers = [
 keywords = []
 requires-python = ">={{ python_minimum_version }}"
 dependencies = [
-    {% if libraries_use_qt %}
+    {%- if libraries_use_qt -%}
     "prettyqt",
     "pyside6",
-    {% endif %}
-    {% if libraries_use_pydantic %}
+    {%- endif -%}
+    {%- if libraries_use_pydantic -%}
     "pydantic",
-    {% endif %}
+    {%- endif %}
     # Only add below (Copier)
 ]
 license = { file = "LICENSE" }
@@ -51,9 +51,9 @@ default-groups = ["dev", "lint", "docs"]
 dev = [
     "pytest",
     "pytest-cov",
-    {% if libraries_use_qt %}
+    {%- if libraries_use_qt -%}
     "pytest-qt",
-    {% endif %}
+    {%- endif -%}
     "pyreadline3",
     "devtools",
     # Only add below (Copier)
