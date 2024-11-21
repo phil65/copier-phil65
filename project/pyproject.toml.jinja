@@ -32,6 +32,7 @@ classifiers = [
 ]
 keywords = []
 requires-python = ">={{ python_minimum_version }}"
+license = { file = "LICENSE" }
 dependencies = [
 {% if libraries_use_qt -%}
     "prettyqt",
@@ -42,7 +43,6 @@ dependencies = [
 {%- endif %}
     # Only add below (Copier)
 ]
-license = { file = "LICENSE" }
 
 [tool.uv]
 default-groups = ["dev", "lint", "docs"]
@@ -231,6 +231,8 @@ reportAny = false
 reportImplicitOverride = false
 reportUnusedFunction = false
 reportImplicitStringConcatenation = false
+reportIgnoreCommentWithoutRule = false
+reportUnannotatedClassAttribute = false
 
 [tool.mknodes]
 allowed-commit-types = [
