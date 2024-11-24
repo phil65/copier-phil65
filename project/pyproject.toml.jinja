@@ -223,6 +223,7 @@ combine-as-imports = true
 [tool.pyright]
 pythonVersion = "{{ python_minimum_version }}"
 pythonPlatform = "All"
+typeCheckingMode = "basic"
 deprecateTypingAliases = true
 reportMissingTypeStubs = false
 reportUnusedCallResult = false
@@ -233,6 +234,8 @@ reportUnusedFunction = false
 reportImplicitStringConcatenation = false
 reportIgnoreCommentWithoutRule = false
 reportUnannotatedClassAttribute = false
+reportSelfClsParameterName = false
+reportPrivateImportUsage = false
 
 [tool.mknodes]
 allowed-commit-types = [
