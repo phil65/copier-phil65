@@ -28,6 +28,10 @@ classifiers = [
     "Topic :: Software Development",
     "Topic :: Utilities",
     "Typing :: Typed",
+{%- if libraries_use_pydantic -%}
+    "Framework :: Pydantic",
+    "Framework :: Pydantic :: 2",
+{%- endif %}
 
 ]
 keywords = []
