@@ -214,6 +214,9 @@ ignore = [
 [tool.ruff.lint.flake8-quotes]
 docstring-quotes = "double"
 
+[tool.ruff.lint.flake8-type-checking]
+runtime-evaluated-base-classes = ["pydantic.BaseModel", "sqlalchemy.orm.DeclarativeBase", "schemez.Schema"]
+
 [tool.ruff.format]
 # Enable preview style formatting.
 preview = true
