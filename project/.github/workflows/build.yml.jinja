@@ -36,7 +36,7 @@ jobs:
           cache-suffix: {% raw %}py${{ matrix.python_version }}{% endraw %}
 
       - name: Install dependencies (uv sync)
-        run: uv sync --all-extras --no-group docs
+        run: uv sync --all-extras --no-group docs --no-group lint
 
       - name: Check for code issues (ruff check)
         uses: astral-sh/ruff-action@v3
