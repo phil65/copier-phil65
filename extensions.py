@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 import subprocess
+import textwrap
 import unicodedata
 from datetime import date
 from typing import Any
@@ -28,10 +29,30 @@ def slugify(value: Any, separator: str = "-"):
     return re.sub(r"[-_\s]+", separator, value).strip("-_")
 
 
+def wrap_text(text: str, width: int = 80) -> str:
+    """Wrap text to specified width, preserving existing line breaks."""
+    if not text:
+        return text
+
+    # Split by existing line breaks and wrap each paragraph
+    paragraphs = text.split("\n")
+    wrapped_paragraphs = []
+
+    for paragraph in paragraphs:
+        if paragraph.strip():
+            wrapped = textwrap.fill(paragraph.strip(), width=width)
+            wrapped_paragraphs.append(wrapped)
+        else:
+            wrapped_paragraphs.append("")
+
+    return "\n".join(wrapped_paragraphs)
+
+
 class MyExtensions(Extension):
     def __init__(self, environment: Environment):
         super().__init__(environment)
         environment.filters["git_user_name"] = git_user_name
         environment.filters["git_user_email"] = git_user_email
         environment.filters["slugify"] = slugify
+        environment.filters["wrap_text"] = wrap_text
         environment.globals["current_year"] = date.today().year
