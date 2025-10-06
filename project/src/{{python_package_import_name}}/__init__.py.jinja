@@ -1,4 +1,14 @@
-__version__ = "0.0.1"
+from __future__ import annotations
+
+try:
+    from importlib.metadata import version
+except ImportError:
+    from importlib_metadata import version  # Python < 3.8
+
+try:
+    __version__ = version("{{ python_package_distribution_name }}")
+except Exception:
+    __version__ = "unknown"
 
 
-__all__ = []
+__all__ = ["__version__"]

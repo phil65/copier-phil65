@@ -71,7 +71,7 @@ lint = [
 ]
 
 [build-system]
-requires = ["hatch-regex-commit", "hatchling"]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.coverage.report]
@@ -83,10 +83,7 @@ exclude_lines = [
   'if __name__ == "__main__":',
 ]
 
-[tool.hatch.version]
-source = "regex_commit"
-commit_extra_args = ["-e"]
-path = "src/{{ python_package_import_name }}/__init__.py"
+
 
 [tool.mknodes]
 allowed-commit-types = [
