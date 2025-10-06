@@ -48,6 +48,20 @@ def wrap_text(text: str, width: int = 80) -> str:
     return "\n".join(wrapped_paragraphs)
 
 
+def ensure_period(text: str) -> str:
+    """Ensure text ends with exactly one period."""
+    if not text:
+        return text
+
+    text = text.strip()
+    # Remove any trailing punctuation
+    while text and text[-1] in ".!?":
+        text = text[:-1]
+
+    # Add exactly one period
+    return text + "."
+
+
 class MyExtensions(Extension):
     def __init__(self, environment: Environment):
         super().__init__(environment)
@@ -55,4 +69,5 @@ class MyExtensions(Extension):
         environment.filters["git_user_email"] = git_user_email
         environment.filters["slugify"] = slugify
         environment.filters["wrap_text"] = wrap_text
+        environment.filters["ensure_period"] = ensure_period
         environment.globals["current_year"] = date.today().year
