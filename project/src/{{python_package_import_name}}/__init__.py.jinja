@@ -1,9 +1,17 @@
+"""{{ project_name }}: {{ project_description }}"""
+
 from __future__ import annotations
 
 from importlib.metadata import version
 
 __version__ = version("{{ python_package_distribution_name }}")
-
+__title__ = "{{ project_name }}"
+__description__ = "{{ project_description }}"
+__author__ = "{{ author_fullname }}"
+__author_email__ = "{{ author_email }}"
+__copyright__ = "Copyright (c) {{ copyright_date }} {{ copyright_holder }}"
+__license__ = "MIT"
+__url__ = "https://{{ repository_provider }}/{{ repository_namespace }}/{{ repository_name }}"
 
 __all__ = [
     "__version__",
