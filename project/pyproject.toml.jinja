@@ -127,10 +127,11 @@ reportUnannotatedClassAttribute = false
 reportSelfClsParameterName = false
 reportPrivateImportUsage = false
 
-[tool.pytest.ini_options]
+[tool.pytest.options]
 log_cli = true
 log_date_format = "%Y-%m-%d %H:%M:%S"
 log_format = "%(asctime)s %(levelname)s %(message)s"
+minversion = "9.0"
 testpaths = "tests/"
 asyncio_mode = "auto"
 
