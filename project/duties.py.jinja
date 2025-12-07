@@ -71,6 +71,9 @@ def version(
         msg = "Cannot release with uncommitted changes. Please commit or stash first."
         raise RuntimeError(msg)
 
+    print("Running prek hooks...")
+    ctx.run("prek run --all-files")
+
     # Read current version
     old_version = ctx.run("uv version --short", capture=True).strip()
     print(f"Current version: {old_version}")
@@ -78,7 +81,9 @@ def version(
     new_version = ctx.run("uv version --short", capture=True).strip()
     print(f"New version: {new_version}")
     ctx.run("git add pyproject.toml")
-    ctx.run(f'git commit -m "chore: bump version {old_version} -> {new_version}"')
+    ctx.run(
+        f'git commit --no-verify -m "chore: bump version {old_version} -> {new_version}"{args_str}'
+    )
 
     # Create and push tag
     tag = f"v{new_version}"
