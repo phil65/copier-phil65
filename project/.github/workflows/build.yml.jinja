@@ -9,6 +9,7 @@ env:
 jobs:
   test:
     runs-on: {% raw %}${{ matrix.os }}{% endraw %}
+    timeout-minutes: 30
     continue-on-error: {% raw %}${{ matrix.python_version == '3.14' }}{% endraw %}
     strategy:
       matrix:
@@ -64,6 +65,7 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     needs: test
     if: startsWith(github.ref, 'refs/tags/')
     permissions:
