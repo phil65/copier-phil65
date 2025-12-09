@@ -9,7 +9,7 @@ from typing import Literal
 from duty import duty  # pyright: ignore[reportMissingImports]
 
 # Read configuration from copier-answers.yml
-_answers_file = Path("copier-answers.yml")
+_answers_file = Path(".copier-answers.yml")
 if _answers_file.exists():
     content = _answers_file.read_text()
     match = re.search(r"^python_package_import_name:\s*(.+)$", content, re.MULTILINE)
