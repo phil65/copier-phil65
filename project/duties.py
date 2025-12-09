@@ -2,11 +2,12 @@
 
 from __future__ import annotations
 
-import re
 from pathlib import Path
+import re
 from typing import Literal
 
 from duty import duty  # pyright: ignore[reportMissingImports]
+
 
 # Read configuration from copier-answers.yml
 _answers_file = Path(".copier-answers.yml")
