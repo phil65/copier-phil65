@@ -2,6 +2,7 @@
 
 [project]
 name = "{{ python_package_distribution_name }}"
+version = "0.0.1"
 description = "{{ project_description }}"
 readme = "README.md"
 requires-python = ">={{ python_minimum_version }}"
@@ -40,7 +41,6 @@ dependencies = [
   {%- endif %}
   Only add below (Copier)
 ]
-dynamic = ["version"]
 
 [project.urls]
 "Code coverage" = "https://app.codecov.io/gh/{{ repository_namespace }}/{{ repository_name }}"
