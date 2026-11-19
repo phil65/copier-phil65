@@ -31,15 +31,15 @@ classifiers = [
   {%- endif %}
 ]
 dependencies = [
-  {% if libraries_use_qt -%}
-      "prettyqt",
-      "pyside6",
-  {%- endif -%}
-  {%- if libraries_use_pydantic -%}
-      "pydantic",
-      "schemez",
-  {%- endif %}
-  Only add below (Copier)
+{% if libraries_use_qt -%}
+    "prettyqt",
+    "pyside6",
+{%- endif -%}
+{%- if libraries_use_pydantic -%}
+    "pydantic",
+    "schemez",
+{%- endif %}
+  # Only add below (Copier)
 ]
 
 [project.urls]
@@ -52,6 +52,7 @@ Source = "https://github.com/{{ repository_namespace }}/{{ repository_name }}"
 [dependency-groups]
 dev = [
   "devtools",
+  "deptry",
   {%- if libraries_use_qt -%}
       "pytest-qt",
   {%- endif %}

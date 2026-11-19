@@ -39,6 +39,7 @@ jobs:
           enable-cache: true
           cache-dependency-glob: pyproject.toml
           cache-suffix: {% raw %}py${{ matrix.python_version }}{% endraw %}
+          python-version: {% raw %}${{ matrix.python_version }}{% endraw %}
 
       - name: Install dependencies (uv sync)
         run: uv sync --all-extras --no-group docs --no-group lint
