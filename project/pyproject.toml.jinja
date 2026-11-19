@@ -14,6 +14,10 @@ authors = [
 keywords = []
 classifiers = [
   "Development Status :: 4 - Beta",
+{%- if libraries_use_pydantic %}
+  "Framework :: Pydantic",
+  "Framework :: Pydantic :: 2",
+{%- endif %}
   "Intended Audience :: Developers",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
@@ -25,19 +29,20 @@ classifiers = [
   "Topic :: Software Development",
   "Topic :: Utilities",
   "Typing :: Typed",
-  {%- if libraries_use_pydantic -%}
-      "Framework :: Pydantic",
-      "Framework :: Pydantic :: 2",
-  {%- endif %}
 ]
 dependencies = [
-{% if libraries_use_qt -%}
-    "prettyqt",
-    "pyside6",
-{%- endif -%}
-{%- if libraries_use_pydantic -%}
-    "pydantic",
-    "schemez",
+{#- One conditional per entry keeps the list alphabetically sorted (tombi). #}
+{%- if libraries_use_qt %}
+  "prettyqt",
+{%- endif %}
+{%- if libraries_use_pydantic %}
+  "pydantic",
+{%- endif %}
+{%- if libraries_use_qt %}
+  "pyside6",
+{%- endif %}
+{%- if libraries_use_pydantic %}
+  "schemez",
 {%- endif %}
   # Only add below (Copier)
 ]
@@ -51,14 +56,14 @@ Source = "https://github.com/{{ repository_namespace }}/{{ repository_name }}"
 
 [dependency-groups]
 dev = [
-  "devtools",
   "deptry",
-  {%- if libraries_use_qt -%}
-      "pytest-qt",
-  {%- endif %}
+  "devtools",
   "pyreadline3",
   "pytest",
   "pytest-cov",
+{%- if libraries_use_qt %}
+  "pytest-qt",
+{%- endif %}
   # Only add below (Copier)
 ]
 benchmark = ["pyinstrument"]
@@ -85,8 +90,6 @@ exclude_lines = [
   "except ImportError",
   'if __name__ == "__main__":',
 ]
-
-
 
 [tool.mknodes]
 allowed-commit-types = [
