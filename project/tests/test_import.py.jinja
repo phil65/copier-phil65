@@ -1,0 +1,10 @@
+"""Smoke test: the package imports and reports its version."""
+
+from __future__ import annotations
+
+import {{ python_package_import_name }}
+
+
+def test_package_imports() -> None:
+    """The package can be imported and exposes a version string."""
+    assert isinstance({{ python_package_import_name }}.__version__, str)
