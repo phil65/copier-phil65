@@ -22,10 +22,9 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.12",
-  "Programming Language :: Python :: 3.13",
-  "Programming Language :: Python :: 3.14",
-  "Topic :: Documentation",
+{%- for minor in range(python_minimum_version.split('.')[1] | int, 15) %}
+  "Programming Language :: Python :: 3.{{ minor }}",
+{%- endfor %}
   "Topic :: Software Development",
   "Topic :: Utilities",
   "Typing :: Typed",
