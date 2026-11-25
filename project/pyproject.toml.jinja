@@ -51,6 +51,9 @@ dependencies = [
 Documentation = "https://{{ repository_namespace }}.github.io/{{ repository_name }}/"
 Issues = "https://github.com/{{ repository_namespace }}/{{ repository_name }}/issues"
 Source = "https://github.com/{{ repository_namespace }}/{{ repository_name }}"
+{%- for spec in specs %}
+"Spec: {{ spec.name }}" = "{{ spec.url }}"
+{%- endfor %}
 
 [dependency-groups]
 dev = [
@@ -66,8 +69,8 @@ dev = [
 ]
 benchmark = ["pyinstrument"]
 docs = [
-  "mknodes>=4.0.0",
   "mkdocstrings[python]",
+  "mknodes>=4.0.0",
   # Only add below (Copier)
 ]
 lint = [

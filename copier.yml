@@ -11,6 +11,7 @@ _jinja_extensions:
   - extensions.py:MyExtensions
 _skip_if_exists:
   - CHANGELOG.md
+  - AGENTS.md
 
 # PROMPT --------------------------------
 project_name:
@@ -97,3 +98,10 @@ libraries_use_pydantic:
   type: bool
   help: Use Pydantic?
   default: false
+
+specs:
+  type: yaml
+  help: >-
+    Specs / protocols the project implements, as a list of {name, url}
+    (rendered as "Spec: <name>" project URLs; describe them in AGENTS.md's Specs table)
+  default: []
