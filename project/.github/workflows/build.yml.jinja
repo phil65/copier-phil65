@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
-{% if use_qt %}
+{% if libraries_use_qt %}
 
       - uses: tlambert03/setup-qt-libs@v1
       # *alternative*:

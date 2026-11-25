@@ -46,6 +46,8 @@ jobs:
           path: ./site
 
   deploy:
+    # GitHub Pages of a private repo would be public (outside Enterprise): don't deploy those.
+    if: {% raw %}${{ !github.event.repository.private }}{% endraw %}
     environment:
       name: github-pages
       url: {% raw %}${{ steps.deployment.outputs.page_url }}{% endraw %}
