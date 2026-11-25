@@ -76,8 +76,8 @@ python_package_distribution_name:
 
 python_minimum_version:
   type: str
-  help: The lowest supported python version
-  default: "3.13"
+  help: The lowest supported python version (we support the last two releases)
+  default: "3.14"
 
 python_package_import_name:
   type: str
