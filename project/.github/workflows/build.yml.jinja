@@ -10,12 +10,13 @@ jobs:
   test:
     runs-on: {% raw %}${{ matrix.os }}{% endraw %}
     timeout-minutes: 30
-    # 3.15 is a pre-release: test it early, but don't let it block the build.
-    continue-on-error: {% raw %}${{ matrix.python_version == '3.15' }}{% endraw %}
+    # The newest entry is a CPython pre-release: test it early, but don't let it block the build.
+    # When a new CPython ships: bump this version and the matrix range end (stable versions must pass).
+    continue-on-error: {% raw %}${{ matrix.python_version == '3.16' }}{% endraw %}
     strategy:
       fail-fast: false
       matrix:
-        python_version: [{% for minor in range(python_minimum_version.split('.')[1] | int, 16) %}"3.{{ minor }}"{{ ", " if not loop.last }}{% endfor %}]
+        python_version: [{% for minor in range(python_minimum_version.split('.')[1] | int, 17) %}"3.{{ minor }}"{{ ", " if not loop.last }}{% endfor %}]
         os: ["ubuntu-latest", "macos-latest", "windows-latest"]
     steps:
       - name: Check out repository
