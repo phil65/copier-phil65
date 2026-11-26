@@ -12,12 +12,17 @@ jobs:
     timeout-minutes: 30
     # The newest entry is a CPython pre-release: test it early, but don't let it block the build.
     # When a new CPython ships: bump this version and the matrix range end (stable versions must pass).
-    continue-on-error: {% raw %}${{ matrix.python_version == '3.16' }}{% endraw %}
+    # A free-threaded build (`t` suffix, no GIL) is allowed to fail too: C extensions may lag.
+    continue-on-error: {% raw %}${{ matrix.python_version == '3.16' || endsWith(matrix.python_version, 't') }}{% endraw %}
     strategy:
       fail-fast: false
       matrix:
         python_version: [{% for minor in range(python_minimum_version.split('.')[1] | int, 17) %}"3.{{ minor }}"{{ ", " if not loop.last }}{% endfor %}]
-        os: ["ubuntu-latest", "macos-latest", "windows-latest"]
+        os: ["ubuntu-latest", "macos-latest", "windows-latest"]{% if ci_free_threading %}
+        include:
+          # Free-threaded CPython (PEP 703): races the GIL used to hide
+          - python_version: "{{ python_minimum_version }}t"
+            os: ubuntu-latest{% endif %}
     steps:
       - name: Check out repository
         uses: actions/checkout@v7

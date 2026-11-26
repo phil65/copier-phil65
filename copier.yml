@@ -94,6 +94,11 @@ libraries_use_qt:
   help: Use Qt libraries?
   default: false
 
+ci_free_threading:
+  type: bool
+  help: Also test on free-threaded CPython (3.14t, no GIL; allowed to fail)?
+  default: false
+
 libraries_use_pydantic:
   type: bool
   help: Use Pydantic?
