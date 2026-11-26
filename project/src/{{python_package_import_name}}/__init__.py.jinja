@@ -3,8 +3,6 @@
 {{ project_description | wrap_text(86) | ensure_period }}
 """
 
-from __future__ import annotations
-
 from importlib.metadata import version
 
 __version__ = version("{{ python_package_distribution_name }}")
