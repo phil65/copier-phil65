@@ -49,8 +49,9 @@ jobs:
           cache-suffix: {% raw %}py${{ matrix.python_version }}{% endraw %}
           python-version: {% raw %}${{ matrix.python_version }}{% endraw %}
 
-      - name: Install dependencies (uv sync)
-        run: uv sync --all-extras --no-group docs
+      - name: Install dependencies (uv sync){% if ci_free_threading %}
+        # A free-threaded build may lack wheels for some extras: then it syncs without extras{% endif %}
+        run: uv sync --all-extras --no-group docs{% if ci_free_threading %}{% raw %}${{ endsWith(matrix.python_version, 't') && ' || uv sync --no-group docs' || '' }}{% endraw %}{% endif %}
 
       # ruff / ty come from the pinned `lint` group, same versions as pre-commit.
       - name: Check for code issues (ruff check)
