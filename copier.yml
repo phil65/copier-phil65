@@ -103,5 +103,9 @@ specs:
   type: yaml
   help: >-
     Specs / protocols the project implements, as a list of {name, url}
-    (rendered as "Spec: <name>" project URLs; describe them in AGENTS.md's Specs table)
+    (rendered as "Spec: <name>" project URLs; describe them in AGENTS.md's Specs table).
+    PyPI rejects project URL labels longer than 32 characters or containing a comma,
+    so "Spec: <name>" must stay within that (name <= 26 characters, no comma).
   default: []
+  validator: >-
+    {% for spec in specs %}{% if ("Spec: " ~ spec.name)|length > 32 or "," in spec.name %}Spec name "{{ spec.name }}": "Spec: <name>" must be <= 32 characters and contain no comma (PyPI rejects it).{% endif %}{% endfor %}
